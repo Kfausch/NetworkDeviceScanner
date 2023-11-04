@@ -26,6 +26,9 @@ def scan(ip):
 
         mactoget = site + element[1].hwsrc
         vendor = get(mactoget).text
+        #checks if there were errors in get request
+        if "errors" in vendor:
+            vendor = "Vendor not found"
         #slows script down so you do not exceed request limits
         time.sleep(2)
         device_info["type"] = vendor
